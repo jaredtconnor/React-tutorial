@@ -2,12 +2,20 @@ import React from 'react'
 
 const App = () => { 
   const course = 'Half Stack application development'
-  const part1 = 'Fundamentals of React'
-  const ex1 = 10 
-  const part2 = 'Using props to pass data'
-  const ex2 = 7 
-  const part3 = 'State of a component'
-  const ex3 = 14
+  const parts = [ 
+    { 
+      name: 'Fundamentals of React', 
+      exercises: 10
+    },
+    { 
+      name: 'Using props to pass data',
+      exercises: 7
+    }, 
+    { 
+      name: 'State of a component',
+      exercises: 14
+    }
+  ]
 
   const Header = (props) => {
     return ( 
@@ -51,5 +59,4 @@ const App = () => {
     </div>
   )
 }
-
 export default App
