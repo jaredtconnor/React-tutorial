@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // Partials
 import Header from './components/Header';
 import Total from './components/Total';
 import Content from './components/Content';
 
-
 // Main app 
-const App = () => { 
+const App = (props) => { 
+
+  const [counter, setCounter ] = useState(0); 
+
+  setTimeout(
+
+    () => setCounter(counter + 1), 
+    1000
+  )
+
   const course = {
     name: 'Half Stack application development', 
     parts: [ 
@@ -25,7 +33,7 @@ const App = () => {
       }
     ]
   };
-
+  
   const {name, parts} = course; 
   const exercises = parts.map(part => part.exercises);
 
@@ -34,6 +42,7 @@ const App = () => {
       <Header courseName={name}/>
       <Content parts={parts}/>
       <Total exercises={exercises}/>
+      <div>{counter}</div>
     </div>
   );
 }
