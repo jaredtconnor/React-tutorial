@@ -1,10 +1,22 @@
 import React from 'react'; 
 
-const Counter = ({counter}) => { 
+const Display = ({counter}) => { 
 
     return ( 
         <div>{counter}</div>
     );
 }
 
-export default Counter; 
+const Button = (props) => { 
+
+    return ( 
+        <button onClick={props.onClick}> 
+            {props.text} 
+        </button>
+    );
+}
+
+export { 
+    Display, 
+    Button
+};

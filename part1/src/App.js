@@ -4,15 +4,16 @@ import React, { useState } from 'react';
 import Header from './components/Header';
 import Total from './components/Total';
 import Content from './components/Content';
+import {Display, Button} from './components/Counter';
 
 // Main app 
 const App = () => { 
 
   const [counter, setCounter ] = useState(0); 
 
-  const handleClick = () => { 
-    setCounter(counter + 1);
-  }
+  const increaseCounter = () => setCounter(counter + 1); 
+  const decreaseCounter = () => setCounter(counter - 1);
+  const resetCounter = () => setCounter(0);
 
   const course = {
     name: 'Half Stack application development', 
@@ -40,14 +41,19 @@ const App = () => {
       <Header courseName={name}/>
       <Content parts={parts}/>
       <Total exercises={exercises}/>
-      <div>
-        <button onClick={handleClick}>
-          Increment Counter  
-        </button> 
-        <p>
-          {counter}
-        </p>
-      </div>
+      <Display counter={counter}/>
+      <Button 
+          onClick={increaseCounter}
+          text='Add'
+      />
+      <Button 
+          onClick={decreaseCounter}
+          text='Subtract'
+      />
+      <Button 
+          onClick={resetCounter}
+          text='Zero'
+      />
     </div>
   );
 }
