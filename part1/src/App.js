@@ -6,15 +6,13 @@ import Total from './components/Total';
 import Content from './components/Content';
 
 // Main app 
-const App = (props) => { 
+const App = () => { 
 
   const [counter, setCounter ] = useState(0); 
 
-  setTimeout(
-
-    () => setCounter(counter + 1), 
-    1000
-  )
+  const handleClick = () => { 
+    setCounter(counter + 1);
+  }
 
   const course = {
     name: 'Half Stack application development', 
@@ -42,7 +40,14 @@ const App = (props) => {
       <Header courseName={name}/>
       <Content parts={parts}/>
       <Total exercises={exercises}/>
-      <div>{counter}</div>
+      <div>
+        <button onClick={handleClick}>
+          Increment Counter  
+        </button> 
+        <p>
+          {counter}
+        </p>
+      </div>
     </div>
   );
 }
