@@ -1,22 +1,36 @@
 import React from 'react';
 
-const Content = ({ratings}) => { 
 
-    const ratings_data = {ratings};
-    const total = ratings_data.neutralfeedback + ratings_data.goodfeedback + ratings_data.badfeedback;
-    const avg = ((ratings.goodfeedback - ratings_data.badfeedback) / total) * 100;
-    const avg_positive = (ratings_data.goodfeedback / total) * 100;
+const StaticLine = ({text, value}) => { 
 
     return ( 
-        <div> 
-            <p>Good: {ratings.goodfeedback}</p>
-            <p>Neutral: {ratings.neutralfeedback}</p>
-            <p>Bad: {ratings.badfeedback}</p>
-            <p>Total: {total}</p>
-            <p>Average: {avg}</p>
-            <p>Postitive: {avg_positive}</p>
-        </div>
+       <p>{text}: {value}</p>        
     ); 
 }
 
-export default Content;
+const Content = ({ratings, total, average, positive}) => { 
+
+    if (total === 0){ 
+        return( 
+
+            <p>No feedback given</p>
+
+        )       
+    } else {
+        return ( 
+            <div> 
+                <p>Good: {ratings.goodfeedback}</p>
+                <p>Neutral: {ratings.neutralfeedback}</p>
+                <p>Bad: {ratings.badfeedback}</p>
+                <StaticLine text={"All"} value={total} />
+                <StaticLine text={"Average"} value={average} />
+                <StaticLine text={"Positive"} value={positive} />
+            </div>
+        ); 
+     }
+}
+
+export { 
+    StaticLine, 
+    Content
+}
